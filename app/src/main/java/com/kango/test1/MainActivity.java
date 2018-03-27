@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG);//short
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(i + "\n " + n + "\n " + e);
+        builder.setMessage("學號: " + i + "\n " + n + ",您好" + "\n " + "您的email是: " + e);
         builder.setTitle("Print");
         builder.setPositiveButton("OK",null);
         builder.setNeutralButton("Nothing",null);
