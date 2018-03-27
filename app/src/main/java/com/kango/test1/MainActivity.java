@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int size=30;//private is better
+    private int size=30;//private is better
 
     private EditText id;
     private EditText name;
@@ -35,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.editText2);
         email = findViewById(R.id.editText3);
 
+
+
         send = findViewById(R.id.button);
 
-        printout = findViewById(R.id.textView);
+        //printout = findViewById(R.id.textView);
     }
 
     public void printresult(View v){
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         /*printout.setTextSize(size);
           printout.setText(i + "\n " + n + "\n " + e);*/
 
-        //Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG);//short
+        //Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG).show();//short
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("學號: " + i + "\n " + n + ",您好" + "\n " + "您的email是: " + e);
@@ -57,5 +59,13 @@ public class MainActivity extends AppCompatActivity {
         builder.setNeutralButton("Nothing",null);
         builder.setNegativeButton("Cancel",null);
         builder.show();
+    }
+
+    public void printresult2(View v){
+        String i = id.getText().toString();
+        String n = name.getText().toString();
+        String e = email.getText().toString();
+
+        Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG).show();
     }
 }
