@@ -1,15 +1,17 @@
 package com.kango.test1;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int size=15;//private is better
+    int size=30;//private is better
 
     private EditText id;
     private EditText name;
@@ -42,7 +44,18 @@ public class MainActivity extends AppCompatActivity {
         String i = id.getText().toString();
         String n = name.getText().toString();
         String e = email.getText().toString();
-        printout.setTextSize(size);
-        printout.setText(i + n + e);
+
+        /*printout.setTextSize(size);
+          printout.setText(i + "\n " + n + "\n " + e);*/
+
+        //Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG);//short
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(i + "\n " + n + "\n " + e);
+        builder.setTitle("Print");
+        builder.setPositiveButton("OK",null);
+        builder.setNeutralButton("Nothing",null);
+        builder.setNegativeButton("Cancel",null);
+        builder.show();
     }
 }
