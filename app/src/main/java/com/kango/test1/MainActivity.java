@@ -1,8 +1,11 @@
 package com.kango.test1;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,13 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
         //Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG).show();//short
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("學號: " + i + "\n " + n + ",您好" + "\n " + "您的email是: " + e);
-        builder.setTitle("Print");
-        builder.setPositiveButton("OK",null);
-        builder.setNeutralButton("Nothing",null);
-        builder.setNegativeButton("Cancel",null);
-        builder.show();
+        new AlertDialog.Builder(this)
+                .setMessage(getText(R.string.studentid) + ": " + i + "\n " + n + getText(R.string.hello) + "\n " + getText(R.string.uemail) + ": " + e)
+                .setTitle(R.string.title)
+                .setPositiveButton(getText(R.string.ok),new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d("執行跳轉","604410984段為康");
+                        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNeutralButton(getText(R.string.nothing),null)
+                .setNegativeButton(getText(R.string.cancel),null)
+                .show();
     }
 
     public void printresult2(View v){
@@ -66,6 +75,6 @@ public class MainActivity extends AppCompatActivity {
         String n = name.getText().toString();
         String e = email.getText().toString();
 
-        Toast.makeText(this, i + "\n " + n + "\n " + e, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getText(R.string.studentid) + ": " + i + "\n " + n + getText(R.string.hello) + "\n " + getText(R.string.uemail) + ": " + e, Toast.LENGTH_LONG).show();
     }
 }
