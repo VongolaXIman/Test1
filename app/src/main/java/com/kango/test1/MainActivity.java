@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setMessage(getText(R.string.studentid) + ": " + i + "\n " + n + getText(R.string.hello) + "\n " + getText(R.string.uemail) + ": " + e)
                 .setTitle(R.string.title)
-                .setPositiveButton(getText(R.string.ok),new DialogInterface.OnClickListener() {
+                .setPositiveButton (getText(R.string.ok),new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Log.d("執行跳轉","604410984段為康");
                         Intent intent = new Intent(MainActivity.this, ResultActivity.class);
@@ -74,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
         String i = id.getText().toString();
         String n = name.getText().toString();
         String e = email.getText().toString();
-
+        /*
         Toast.makeText(this, getText(R.string.studentid) + ": " + i + "\n " + n + getText(R.string.hello) + "\n " + getText(R.string.uemail) + ": " + e, Toast.LENGTH_LONG).show();
+        */
+       Bundle bag = new Bundle();
+       Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+
+       bag.putString("student_id", i);
+       bag.putString("student_name", n);
+       bag.putString("student_email", e);
+       intent.putExtras(bag);
+       startActivity(intent);
     }
 }
